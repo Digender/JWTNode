@@ -1,0 +1,19 @@
+{
+  "name": "jwt_node_project",
+  "version": "1.0.0",
+  "description": "Node JWt",
+  "main": "server.js",
+  "scripts": {
+    "test": "nodemon server"
+  },
+  "author": "Digender",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "jsonwebtoken": "^7.1.9",
+    "mongoose": "^4.5.8",
+    "morgan": "^1.7.0",
+    "nodemon": "^1.10.0"
+  }
+}

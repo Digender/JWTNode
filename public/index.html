@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="bower_components/bootstrap/bootstrap.min.css" media="screen" title="no title" charset="utf-8">
+  </head>
+  <body ng-controller="MyController">
+    <h1>Login</h1>
+    <form name="myForm">
+        <input required type="text" name="name" value=""  ng-model="user.name">
+        <input required type="password" name="password" value=""  ng-model="user.password">
+        <input type="button" name="name" value="Login" ng-click="login()">
+        <p>{{message}}</p>
+        <div>{{token}}</div>
+    </form>
+    <script type="text/javascript" src="bower_components/angular/angular.min.js">
+    </script>
+    <script type="text/javascript">
+        var app=angular.module("myapp",[]);
+        app.controller("MyController",function($http,$scope){
+          var vm=$scope;
+          vm.login=function(){
+            var data=vm.user;
+            alert(data.name + " "+data.password);
+            $http.post('http://localhost:8080/api/authenticate',data,{'Content-Type': 'application/x-www-form-urlencoded'}).then(function(response){
+              if(response.data.token){
+                alert("You are Logged in succesfully");
+                vm.token=response.data.token;
+                vm.message=response.data.message;
+              }
+            },function(err){
+              alert("error!!!");
+            });
+          }
+        });
+    </script>
+  </body>
+</html>
